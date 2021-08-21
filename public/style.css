@@ -1,0 +1,41 @@
+.square {
+    width: 2vw;
+    height: 2vw;
+}
+.mini-square {
+    width: 0.5vw;
+    height: 0.5vw;
+    padding: 0;
+}
+div {
+    font-size: 0px;
+}
+td {
+    display: inline-block;
+    padding: 0;
+}
+
+.nothing {
+    background-color: #00000000;
+}
+.clear-area {
+    background-color: #ff0000ff;
+}
+.object {
+    background-color: #00ff00ff;
+}
+.construction {
+    background-color: #ffff00ff;
+}
+.dynamic-structure {
+    background-color: #00ffffff;
+}
+.static-structure {
+    background-color: #0088ffff;
+}
+.main {
+    background-color: #bb33ffff;
+}
+.shack {
+    background-color: #ff00ffff;
+}

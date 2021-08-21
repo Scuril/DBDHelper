@@ -123,4 +123,4 @@ dist
 .pnp.*
 
 # project
-structures/
+MapStructures/

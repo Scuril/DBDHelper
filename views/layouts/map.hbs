@@ -1,0 +1,19 @@
+<table cellspacing="0">
+    <tbody>
+        {{#each classes}}
+        <tr>
+            {{#each this}}  
+            <td>
+                {{#each this}}
+                <div>
+                    {{#each this}}
+                    <object class="mini-square {{color}}" data-coordinate-x="{{coors.x}}" data-coordinate-y="{{coors.y}}"></object>
+                    {{/each}}
+                </div>
+                {{/each}}
+            </td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
