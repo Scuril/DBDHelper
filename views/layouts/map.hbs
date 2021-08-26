@@ -1,13 +1,13 @@
 <table cellspacing="0">
     <tbody>
-        {{#each classes}}
+        {{#each array}}
         <tr>
-            {{#each this}}  
+            {{#each item}}  
             <td>
-                {{#each this}}
+                {{#each item}}
                 <div>
-                    {{#each this}}
-                    <object class="mini-square {{color}}" data-coordinate-x="{{coors.x}}" data-coordinate-y="{{coors.y}}"></object>
+                    {{#each item}}
+                    <object class="mini-square {{get_item_from_array ../../../../colors item}}" data-coordinate-x="{{_i}}" data-coordinate-y="{{../_i}}"></object>
                     {{/each}}
                 </div>
                 {{/each}}

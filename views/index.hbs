@@ -1,2 +1,12 @@
 <h1>Index</h1>
-{{{minimap}}}
+{{#eachInMap grouped}}
+<div class="realm-collection">
+    <h1>{{key}}</h2>
+    {{#each value}}
+    <a href="{{item.title}}" class="realm">
+        <h3>{{item.title}}</h3>
+        {{> minimap array=item.minimap.array colors=item.minimap.NumberToColor}}
+    </a>
+    {{/each}}
+</div>
+{{/eachInMap}}

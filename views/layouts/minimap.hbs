@@ -1,9 +1,9 @@
 <table cellspacing="0">
     <tbody>
-        {{#each classes}}
+        {{#each array}}
         <tr>
-            {{#each this}}  
-            <td class="square {{color}}" data-coordinate-x="{{coors.x}}" data-coordinate-y="{{coors.y}}"></td>
+            {{#each item}}
+            <td class="square {{get_item_from_array ../../colors item}}" data-coordinate-x="{{_i}}" data-coordinate-y="{{../_i}}"></td>
             {{/each}}
         </tr>
         {{/each}}
