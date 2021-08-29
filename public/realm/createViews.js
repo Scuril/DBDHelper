@@ -11,8 +11,8 @@ const createSectorView = () => {
     sectors.append(a)
   }
   sectors.style.width = table.offsetWidth + "px"
-  sectors.style.height = table.offsetHeight + "px"
-  sectors.style.top = table.offsetTop + "px"
+  sectors.style.height = table.offsetHeight + 1 + "px"
+  sectors.style.top = table.offsetTop - 1 + "px"
   sectors.style.left = table.offsetLeft + "px"
 
   sectors.style.display = "none"
