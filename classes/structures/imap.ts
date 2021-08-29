@@ -15,7 +15,7 @@ export const SquareLength = 4
 export class IMap<T> {
   public array: T[][]
 
-  public NumberToColor = [
+  public static NumberToColor = [
     'nothing',
     'clear-area',
     'object',
@@ -34,25 +34,28 @@ export class IMap<T> {
     throw new Error("Not Implement Exception")
   }
 
-  public rotate(count: number = 1): void {
+  public rotate(count: number = 1): T[][] {
     if (this.array.length === 0)
       throw new Error("Array isn't exist, but tried to rotate")
 
+    var a = this.array
     for (let i = 0; i < count; i++) {
-      this.array = this.array[0].map((_, j) => this.array.map(x => x[this.array[0].length -1 - j]))
+      a = a[0].map((_, j) => a.map(x => x[a[0].length -1 - j]))
     }
+    
+    return a
   }
 
-  protected findShack(): coordinates {
+  public findShack(): coordinates[] {
     throw new Error("Not Implement Exception")
   }
 
   public normalize(): void {
-    const shack = this.findShack()
+    let shack: coordinates | coordinates[] = this.findShack()
+    shack = shack?.[Math.floor(shack?.length / 2)]
     if (!shack) {
       return
     }
-
     const center = this.center
   
     const vertmap = this.array.length > this.array[0].length
@@ -64,15 +67,15 @@ export class IMap<T> {
     
     if (vertmap || sqmap) {
       if (top) {
-        this.rotate(2)
+        this.array = this.rotate(2)
       }
     }
     else if (!sqmap) {
       if (left) {
-        this.rotate()
+        this.array = this.rotate()
       }
       else {
-        this.rotate(3)
+        this.array = this.rotate(3)
       }
     }
   }

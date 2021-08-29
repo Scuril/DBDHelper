@@ -5,7 +5,7 @@
     {{#each value}}
     <a href="{{item.title}}" class="realm">
         <h3>{{item.title}}</h3>
-        {{> minimap array=item.minimap.array colors=item.minimap.NumberToColor}}
+        {{> minimap array=item.minimap.array colors=../../colors}}
     </a>
     {{/each}}
 </div>

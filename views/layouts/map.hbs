@@ -7,7 +7,7 @@
                 {{#each item}}
                 <div>
                     {{#each item}}
-                    <object class="mini-square {{get_item_from_array ../../../../colors item}}" data-coordinate-x="{{_i}}" data-coordinate-y="{{../_i}}"></object>
+                    <object class="mini-square {{get_item_from_array ../../../../colors item}}" data-coordinate-x="{{calc (calc ../../_i "*" ../../../../SquareLength) "+" _i}}" data-coordinate-y="{{calc (calc ../../../_i "*" ../../../../SquareLength) "+" ../_i}}"></object>
                     {{/each}}
                 </div>
                 {{/each}}

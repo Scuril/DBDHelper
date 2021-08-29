@@ -9,8 +9,8 @@ export class Minimap extends IMap<number> {
 
   public get center(): coordinates {
     const inOne = this.array.reduce((a, v) => a.concat(v)).filter(x => x)
-    let x = this.array.map((x, i) => x.map(y => y ? i+0.5 : 0)).reduce((a, v) => a.concat(v)).reduce((a, v) => a + v) / inOne.length
-    let y = this.array.map(x => x.map((y, j) => y ? j+0.5 : 0)).reduce((a, v) => a.concat(v)).reduce((a, v) => a + v) / inOne.length
+    let y = this.array.map((x, i) => x.map(y => y ? i+0.5 : 0)).reduce((a, v) => a.concat(v)).reduce((a, v) => a + v) / inOne.length
+    let x = this.array.map(x => x.map((y, j) => y ? j+0.5 : 0)).reduce((a, v) => a.concat(v)).reduce((a, v) => a + v) / inOne.length
 
     return { x, y }
   }
@@ -23,7 +23,7 @@ export class Minimap extends IMap<number> {
     return new Bigmap(bigmapArr)
   }
 
-  protected findShack(): coordinates {
+  public findShack(): coordinates[] {
     return findDoubleArrayIndex(this.array, 7)
   }
 }

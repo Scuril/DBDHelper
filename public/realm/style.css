@@ -1,0 +1,17 @@
+button {
+    width: 75px;
+    height: 75px;
+    background-color: #777;
+    margin: 10px;
+}
+.map {
+    float: left;
+    margin-right: 5%;
+}
+.active {
+    background-color: #444;
+}
+
+.view-container {
+    position: absolute;
+}

@@ -21,6 +21,10 @@ export class Realm {
     
     this.minimap.normalize()
   }
+
+  public static CreateFrom(realm: Realm) {
+    return new Realm(realm.collection, realm.title, realm.minimap.array)
+  }
 }
 
 export function GroupByCollections(realms: Realm[]): Map<string, Realm[]> {

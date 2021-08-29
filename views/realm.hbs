@@ -1,1 +1,38 @@
-{{> map array=array colors=colors}}
+<div class="map">
+    {{> map array=array colors=colors}}
+</div>
+
+<div class="rotaters">
+    <button class="rotate rotate-left">Rotate Left</button>
+    <button class="rotate rotate-right">Rotate Right</button>
+</div>
+
+
+<div class="view-changers">
+    <button class="view-change active">Standart view</button>
+    <button class="view-change clock-view">Clock view</button>
+    <button class="view-change sector-view">Sector view</button>
+</div>
+
+<div class="clock-view-changers">
+    <button class="clock-view-change auto1 active">Auto 1</button>
+    <button class="clock-view-change auto2">Auto 2</button>
+    <button class="clock-view-change auto3 unrotate">Auto 3</button>
+    <button class="clock-view-change manual unrotate">Preset</button>
+</div>
+
+
+<script>
+    window.center = {{{center}}}
+    window.shack = {{{shack}}}
+    window.rotate = {{{rotate}}}
+    window.squareLength = {{{SquareLength}}}
+</script>
+<script src="/realm/registerEvents.js"></script>
+<script src="/realm/createClockHelpers.js"></script>
+<script src="/realm/createClock.js"></script>
+<script src="/realm/createViews.js"></script>
+<script src="/realm/main.js"></script>
+<link rel="stylesheet" href="/realm/style.css">
+<link rel="stylesheet" href="/realm/clock.css">
+<link rel="stylesheet" href="/realm/sector.css">

@@ -1,4 +1,5 @@
 import { Realm, CreateRealms, GroupByCollections } from "./classes/realm"
+import { IMap, SquareLength } from "./classes/structures/imap"
 import { config } from './config'
 
 const expressHbs = require('express-handlebars')
@@ -16,33 +17,7 @@ app.engine(
     partialsDir: 'views/layouts/',
     defaultLayout:'main',
     extname: 'hbs',
-    helpers: {
-      'get_item_from_array': (array: any[], index: number) => {
-        return array[index]
-      },
-      'log_item': (item: any) => {
-        console.log(item)
-        return item
-      },
-      'eachInMap': (map: any, block: any) => {
-        let out = '';
-        [...map.keys()].forEach((prop: string) => {
-          out += block.fn({ key: prop, value: map.get(prop) })
-        });
-        return out;
-      },
-      "each": (context: any, options: any) => {
-        let ret = "";
-        for (var i = 0, j = context?.length | 0; i < j; i++) {
-          let a = {
-            item: context[i],
-            _i: i
-          }
-          ret += options.fn(a);
-        }
-        return ret;
-      }
-    }
+    helpers: require('./hbs-helpers')
   })
 )
 app.set('view engine', 'hbs')
@@ -55,21 +30,41 @@ CreateRealms().then(e => realms = e)
 app.get('/test', (req: any, res: any) => {
   const r = realms[realms.length - 1]
   r.minimap.rotate()
-  res.render('layouts/minimap', { array: r.minimap.array, colors: r.minimap.NumberToColor })
+  res.render('layouts/minimap', { array: r.minimap.array, colors: IMap.NumberToColor })
 })
 
 app.get('/:realmName', (req: any, res: any, next: any) => {
   const { realmName } = req.params
-  const realm = realms.filter(x => x.title === realmName)[0]
+  let { rotate } = req.query
+  rotate |= 0
+  if (!realmName) {
+    return next()
+  }
+  var realm = realms.filter(x => x.title === realmName)[0]
   if (!realm) {
     return next()
   }
-  res.render('realm', { array: realm.map.array, colors: realm.map.NumberToColor })
+  
+
+  if (rotate && parseInt(rotate)) {
+    rotate = parseInt(rotate) % 4
+    realm = Realm.CreateFrom(realm)
+    realm.minimap.array = realm.minimap.rotate(rotate)
+  }
+
+  const map = realm.map
+  const array = map.array
+  const colors = IMap.NumberToColor
+  const center = JSON.stringify(map.center)
+  const shack = JSON.stringify(map.findShack())
+  
+  res.render('realm', { array, colors, center, shack, SquareLength, rotate })
 })
 
 app.get('/', async (req: any, res: any) => {
   const grouped = GroupByCollections(realms)
-  res.render('index', { grouped })
+  const colors = IMap.NumberToColor
+  res.render('index', { grouped, colors })
 })
 
 app.listen(config.PORT, () => {
