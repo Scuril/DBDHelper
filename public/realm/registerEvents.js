@@ -34,7 +34,7 @@ const registerViewChangers = () => {
       const clockView = [...curr.classList].findIndex(x => x === 'clock-view')
       ;[...document.getElementsByClassName('clock-container')].forEach(x => x.style.display = 'none')
       if (clockView !== -1) {
-        [...document.getElementsByClassName('clock-view-change')].filter(x => [...x.classList].findIndex(y => y === 'active'))[0].click()
+        [...document.getElementsByClassName('clock-view-change')].filter(x => [...x.classList].findIndex(y => y === 'active') !== -1)[0].click()
       }
       document.getElementsByClassName('clock-view-changers')[0].style.display = 
         clockView !== -1 ? 

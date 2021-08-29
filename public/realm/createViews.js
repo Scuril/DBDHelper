@@ -34,8 +34,9 @@ const createClockView = () => {
 	const minRadiuses = getMinRadiuses(center, maxCoors)
   const globalOffset = clockViews.getBoundingClientRect()
 
-  console.log(minRadiuses)
+	const c1 = createClock1(maxCoors, blockSize, window.squareLength, globalOffset)
   const c2 = createClock2(window.center, minRadiuses, blockSize, window.squareLength, globalOffset)
 
+	clockViews.append(c1)
   clockViews.append(c2)
 }
