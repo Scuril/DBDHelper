@@ -1,0 +1,7 @@
+.big-square {
+  width: 250px;
+  height: 250px;
+  font-size: 2em;
+  padding: 2%;
+  float: left;
+}

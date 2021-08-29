@@ -36,7 +36,11 @@ const createClockView = () => {
 
 	const c1 = createClock1(maxCoors, blockSize, window.squareLength, globalOffset)
   const c2 = createClock2(window.center, minRadiuses, blockSize, window.squareLength, globalOffset)
+	const c3 = createClock3()
+	const c4 = createClock4()
 
 	clockViews.append(c1)
   clockViews.append(c2)
+	clockViews.append(c3)
+  clockViews.append(c4)
 }

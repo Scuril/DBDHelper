@@ -27,10 +27,9 @@ app.use(express.json())
 var realms: Realm[]
 CreateRealms().then(e => realms = e)
 
-app.get('/test', (req: any, res: any) => {
-  const r = realms[realms.length - 1]
-  r.minimap.rotate()
-  res.render('layouts/minimap', { array: r.minimap.array, colors: IMap.NumberToColor })
+app.get('/info', (req: any, res: any) => {
+  const colors = IMap.NumberToColor
+  res.render('info', { colors })
 })
 
 app.get('/:realmName', (req: any, res: any, next: any) => {

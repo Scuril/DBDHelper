@@ -84,10 +84,24 @@ const createClock1 = (maxCoors, blockPxSize, squareLength, globalOffset) => {
   return createDefClock(center, radiuses, blockPxSize, squareLength, globalOffset)
 }
 
-/**
- * 
- * @returns Clock block
- */
- const createClock2 = (center, minRad, blockPxSize, squareLength, globalOffset) => {
+const createClock2 = (center, minRad, blockPxSize, squareLength, globalOffset) => {
   return createDefClock(center, minRad, blockPxSize, squareLength, globalOffset)
+}
+
+const createClock3 = () => {
+  const clockView = document.createElement('div')
+  clockView.classList.add('clock-container')
+  clockView.style.fontSize = "128px"
+  clockView.innerText = "Idi svoey dorogoy sralker"
+  clockView.style.display = "none"
+  return clockView
+}
+
+const createClock4 = () => {
+  const clockView = document.createElement('div')
+  clockView.classList.add('clock-manual')
+  clockView.style.fontSize = "128px"
+  clockView.innerText = "Idi svoey dorogoy sralker"
+  clockView.style.display = "none"
+  return clockView
 }
