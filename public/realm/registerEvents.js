@@ -2,7 +2,7 @@ const registerRotate = () => {
   [...document.getElementsByClassName('rotate')].forEach(x => {
     x.onclick = (e) => {
       let r = rotate
-      if ([...e.target.classList].findIndex(x => x === 'rotate-left') !== -1) {
+      if ([...e.target.classList].includes('rotate-left')) {
         r += 3
       }
       else {
@@ -27,17 +27,17 @@ const registerViewChangers = () => {
       const curr = e.target
 
       document.getElementsByClassName('sector-container')[0].style.display = 
-        [...curr.classList].findIndex(x => x === 'sector-view') !== -1 ?
+        [...curr.classList].includes('sector-view') ?
           'block' :
           'none'
       
-      const clockView = [...curr.classList].findIndex(x => x === 'clock-view')
+      const clockView = [...curr.classList].includes('clock-view')
       ;[...document.getElementsByClassName('clock-container')].forEach(x => x.style.display = 'none')
-      if (clockView !== -1) {
-        [...document.getElementsByClassName('clock-view-change')].filter(x => [...x.classList].findIndex(y => y === 'active') !== -1)[0].click()
+      if (clockView) {
+        [...document.getElementsByClassName('clock-view-change')].filter(x => [...x.classList].includes('active'))[0].click()
       }
       document.getElementsByClassName('clock-view-changers')[0].style.display = 
-        clockView !== -1 ? 
+        clockView ? 
           'block':
           'none'
 

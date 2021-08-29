@@ -52,7 +52,7 @@ const getMaxCoordinates = () => {
  * @returns {{'horisontal': number, 'vertical': number}} Minimal radiuses of clock
  */
 const getMinRadiuses = (center, maxCoors) => {
-	const blocksNothing = [...document.getElementsByTagName('*')].filter(x => x.getAttribute('data-coordinate-x')).filter(x => [...x.classList].findIndex(y => y === 'nothing') !== -1)
+	const blocksNothing = [...document.getElementsByTagName('*')].filter(x => x.getAttribute('data-coordinate-x')).filter(x => [...x.classList].includes('nothing'))
 
   const horisontal = [...blocksNothing.filter(x => x.getAttribute('data-coordinate-y') == Math.floor(center.y)).map(x => Math.abs(x.getAttribute('data-coordinate-x')-center.x)),
     center.x, maxCoors.x - center.x].reduce((a, v) => a > v ? v : a, maxCoors.x * 10)
