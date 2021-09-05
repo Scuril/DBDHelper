@@ -1,7 +1,7 @@
 /**
  * Create default with callback-customization clock
  * @param {{'x': number, 'y': number}} center Center of the map
- * @param {{'horisontal': number, 'vertical': number}} radiuses Clock radiuses
+ * @param {{'horizontal': number, 'vertical': number}} radiuses Clock radiuses
  * @param {{'width': number, 'height': number}} blockPxSize Block size in px
  * @param {number} squareLength Square length in blocks count
  * @param {{'top': number, 'left': number}} globalOffset Global clock offset
@@ -12,7 +12,7 @@ const createDefClock = (center, radiuses, blockPxSize, squareLength, globalOffse
   const clockView = document.createElement('div')
   clockView.classList.add('clock-container')
 
-  //0 - horisontal digits
+  //0 - horizontal digits
   //1 - vertical digits
   for(let i = 0; i < 2; i++) {
     //0 - left/top
@@ -36,8 +36,8 @@ const createDefClock = (center, radiuses, blockPxSize, squareLength, globalOffse
           (center.y + radiuses.vertical) * j :
           center.y + offset * radiuses.vertical
         let left = i ?
-          center.x + offset * radiuses.horisontal:
-          (center.x + radiuses.horisontal) * (1 - j)
+          center.x + offset * radiuses.horizontal:
+          (center.x + radiuses.horizontal) * (1 - j)
 
         top -= top < squareLength * 0.5 ? top : squareLength * 0.5
         left -= left < squareLength * 0.5 ? left : squareLength * 0.5
@@ -78,7 +78,7 @@ const createClock1 = (maxCoors, blockPxSize, squareLength, globalOffset) => {
   }
   const radiuses = {
     'vertical': center.y,
-    'horisontal': center.x
+    'horizontal': center.x
   }
   
   return createDefClock(center, radiuses, blockPxSize, squareLength, globalOffset)
