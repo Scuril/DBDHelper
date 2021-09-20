@@ -49,15 +49,15 @@ const getMaxCoordinates = () => {
  * Get minimal radiuses of clock based on parameters
  * @param {{'x': number, 'y': number}} center Center of the map
  * @param {{'width': number, 'height': number}} maxCoors Max coordinates of the map
- * @returns {{'horisontal': number, 'vertical': number}} Minimal radiuses of clock
+ * @returns {{'horizontal': number, 'vertical': number}} Minimal radiuses of clock
  */
 const getMinRadiuses = (center, maxCoors) => {
 	const blocksNothing = [...document.getElementsByTagName('*')].filter(x => x.getAttribute('data-coordinate-x')).filter(x => [...x.classList].includes('nothing'))
 
-  const horisontal = [...blocksNothing.filter(x => x.getAttribute('data-coordinate-y') == Math.floor(center.y)).map(x => Math.abs(x.getAttribute('data-coordinate-x')-center.x)),
+  const horizontal = [...blocksNothing.filter(x => x.getAttribute('data-coordinate-y') == Math.floor(center.y)).map(x => Math.abs(x.getAttribute('data-coordinate-x')-center.x)),
     center.x, maxCoors.x - center.x].reduce((a, v) => a > v ? v : a, maxCoors.x * 10)
   const vertical = [...blocksNothing.filter(x => x.getAttribute('data-coordinate-x') == Math.floor(center.x)).map(x => Math.abs(x.getAttribute('data-coordinate-y')-center.y)),
     center.y, maxCoors.y - center.y].reduce((a, v) => a > v ? v : a, maxCoors.y * 10)
 
-	return { horisontal, vertical }
+	return { horizontal, vertical }
 }
