@@ -1,6 +1,6 @@
 import { Realm, CreateRealms, GroupByCollections } from "./classes/realm"
 import { IMap, SquareLength } from "./classes/structures/imap"
-import { config } from './config'
+const config = require('./config')
 
 const expressHbs = require('express-handlebars')
 const express = require('express')
